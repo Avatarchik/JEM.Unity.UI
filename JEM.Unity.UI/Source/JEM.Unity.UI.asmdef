@@ -1,0 +1,16 @@
+{
+    "name": "JEM.Unity.UI",
+    "references": [
+        "GUID:4980e7e2ebd99114ab675fbd9b9badef",
+        "GUID:8d894945200c5c949bf6cfb02ee385ab"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

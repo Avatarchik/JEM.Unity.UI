@@ -1,0 +1,17 @@
+{
+    "name": "com.tylkodemon.jem.unity.ui",
+    "version": "1.0.0",
+    "displayName": "JEM Unity UI",
+    "description": "JEM.UNITY.UI",
+    "unity": "2019.3",
+    "dependencies": {
+      "com.tylkodemon.jem.unity": "1.0.0"
+    },
+    "keywords": [
+      "jem"
+    ],
+    "author": {
+      "name": "TylkoDemon",
+      "url": "https://github.com/TylkoDemon"
+    }
+}
