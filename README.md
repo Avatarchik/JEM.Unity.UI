@@ -7,9 +7,15 @@
 ### JEM.Unity.UI
 
 # Unity Compatibility
-JEM.Unity.UI is currently developed using `Unity 2019.3.0f5`
+JEM.Unity.UI is currently developed by using `Unity 2019.3.0f5`
 
 # Dependencies
-- [`com.tylkodemon.jem.unity (github)`](https://github.com/TylkoDemon/JEM.Unity)
+- [`com.unity.ugui`]
+- [`com.unity.textmeshpro`]
+- [`com.tylkodemon.jem.unity`](https://github.com/TylkoDemon/JEM.Unity)
+
+# Helpdesk
+Have any questions or problems with JEM plugins?
+Feel free to join our discord server and ask us anything: https://discord.gg/A2sDJaN
 
  *JEM (c) 2020 Adam Majcherek*

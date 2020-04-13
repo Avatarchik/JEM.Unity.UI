@@ -5,13 +5,14 @@
     "description": "JEM.UNITY.UI",
     "unity": "2019.3",
     "dependencies": {
+      "com.unity.ugui" : "1.0.0",
+      "com.unity.textmeshpro" : "2.0.1",
       "com.tylkodemon.jem.unity": "1.0.0"
     },
-    "keywords": [
-      "jem"
-    ],
+    "keywords": ["JEM"],
     "author": {
       "name": "TylkoDemon",
       "url": "https://github.com/TylkoDemon"
-    }
+    },
+    "type" : "library"
 }
