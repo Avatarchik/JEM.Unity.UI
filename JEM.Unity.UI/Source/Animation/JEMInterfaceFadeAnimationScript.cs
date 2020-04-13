@@ -7,6 +7,7 @@
 using System;
 using System.Collections;
 using JEM.Unity.Extension;
+using JEM.Unity.Systems;
 using UnityEngine;
 
 namespace JEM.Unity.UI.Animation
@@ -139,6 +140,9 @@ namespace JEM.Unity.UI.Animation
             }
         }
 
+        [JEMGlobalEvent((byte) JEMGlobalEvents.PrepareJEMScripts)]
+        private new static void RegenerateScript() => JEMRegenerableScript<JEMInterfaceFadeAnimationScript>.RegenerateScript();
+        
         private static float deltaTime => Time.timeScale <= 0f ? Time.unscaledDeltaTime : Time.deltaTime;
     }
 }
