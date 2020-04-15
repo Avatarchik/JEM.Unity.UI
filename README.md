@@ -1,10 +1,8 @@
-# JEM.Unity.UI
-
 ![JEM](https://i.imgur.com/mJMUGuL.png)
 
-# Simple C# „Just Enough Methods” Library source-code repository
+# JEM.Unity.UI
 
-### JEM.Unity.UI
+A JEM's extension to UnityEngine.UI (UGUI). Adds draggable/resizable windows, tooltips, fade animations, etc.
 
 # Unity Compatibility
 JEM.Unity.UI is currently developed by using `Unity 2019.3.0f5`
