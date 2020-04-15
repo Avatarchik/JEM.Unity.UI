@@ -8,8 +8,8 @@ A JEM's extension to UnityEngine.UI (UGUI). Adds draggable/resizable windows, to
 JEM.Unity.UI is currently developed by using `Unity 2019.3.0f5`
 
 # Dependencies
-- [`com.unity.ugui`]
-- [`com.unity.textmeshpro`]
+- [`com.unity.ugui`](https://docs.unity3d.com/Packages/com.unity.ugui@1.0)
+- [`com.unity.textmeshpro`](https://docs.unity3d.com/Packages/com.unity.textmeshpro@2.0)
 - [`com.tylkodemon.jem.unity`](https://github.com/TylkoDemon/JEM.Unity)
 
 # Helpdesk
