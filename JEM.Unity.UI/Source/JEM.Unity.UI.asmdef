@@ -1,17 +1,16 @@
 {
     "name": "JEM.Unity.UI",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:4980e7e2ebd99114ab675fbd9b9badef",
-        "GUID:3248e17d2c7b008408290dd767b30bc0"
+        "Unity.TextMeshPro",
+        "JEM.Core",
+        "JEM.Unity"
     ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+    "defineConstraints": []
 }
