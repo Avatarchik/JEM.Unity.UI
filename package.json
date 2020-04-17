@@ -1,13 +1,12 @@
 {
     "name": "com.tylkodemon.jem.unity.ui",
-    "version": "1.0.0",
+    "version": "0.0.2018",
     "displayName": "JEM Unity UI",
     "description": "JEM.UNITY.UI",
-    "unity": "2019.3",
+    "unity": "2018.3",
     "dependencies": {
-      "com.unity.ugui" : "1.0.0",
-      "com.unity.textmeshpro" : "2.0.1",
-      "com.tylkodemon.jem.unity": "1.0.0"
+      "com.unity.textmeshpro" : "1.4.1",
+      "com.tylkodemon.jem.unity": "0.0.2018"
     },
     "keywords": ["JEM"],
     "author": {
