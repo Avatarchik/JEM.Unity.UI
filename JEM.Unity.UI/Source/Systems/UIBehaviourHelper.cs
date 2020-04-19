@@ -79,7 +79,7 @@ namespace JEM.Unity.UI.Systems
             LastContentState = state;
 #if DEBUG
             JEMLogger.Log($"InterfaceContentState={state}", UILogSource.UI);
-#endif   
+#endif
             // Reset behaviours on content change (cuz at this point, we may have missing reference because of most likely scene change).
             ResetBehaviours();
             
@@ -110,6 +110,9 @@ namespace JEM.Unity.UI.Systems
             
             // Update lock rules.
             RefreshLockState();
+            
+            // Invoke onStateChanged after updating UI.
+            UIBehaviourHelperEvents.ForEach(behaviour => behaviour.UIBehaviourStateChanged.OnStateChanged(state));
         }
 
         /// <summary>
