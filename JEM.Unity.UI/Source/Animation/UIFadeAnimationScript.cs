@@ -33,6 +33,7 @@ namespace JEM.Unity.UI.Animation
                 c.alpha = 0f;
                 while (c.alpha < 0.995f)
                 {
+                    var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
                     c.alpha = Mathf.Lerp(c.alpha, 1f, deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
                 }
@@ -44,6 +45,7 @@ namespace JEM.Unity.UI.Animation
                 c.alpha = 1f;
                 while (c.alpha > 0.005f)
                 {
+                    var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
                     c.alpha = Mathf.Lerp(c.alpha, 0f, deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
                 }
@@ -92,6 +94,7 @@ namespace JEM.Unity.UI.Animation
                 window.transform.localScale = window.OriginalScale * window.FadeInScale;
                 while (window.transform.ScaleDistance2D(window.OriginalScale) > 0.005f)
                 {
+                    var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
                     window.transform.LerpLocalScale(window.OriginalScale, deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
                 }
@@ -104,6 +107,7 @@ namespace JEM.Unity.UI.Animation
                 var outScale = window.OriginalScale * window.FadeOutScale;
                 while (window.transform.ScaleDistance2D(outScale) > 0.005f)
                 {
+                    var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
                     window.transform.LerpLocalScale(outScale, deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
                 }
@@ -119,8 +123,8 @@ namespace JEM.Unity.UI.Animation
                 window.RectTransform.sizeDelta = window.OriginalSizeDelta * window.FadeInScale;
                 while (window.RectTransform.SizeDistance(window.OriginalSizeDelta) > 1f)
                 {
-                    window.RectTransform.sizeDelta = Vector2.LerpUnclamped(window.RectTransform.sizeDelta,
-                        window.OriginalSizeDelta, deltaTime * window.FadeSpeed);
+                    var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
+                    window.RectTransform.sizeDelta = Vector2.LerpUnclamped(window.RectTransform.sizeDelta, window.OriginalSizeDelta, deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
                 }
 
@@ -132,6 +136,7 @@ namespace JEM.Unity.UI.Animation
                 var outSize = window.OriginalSizeDelta * window.FadeOutScale;
                 while (window.RectTransform.SizeDistance(outSize) > 1f)
                 {
+                    var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
                     window.RectTransform.sizeDelta = Vector2.LerpUnclamped(window.RectTransform.sizeDelta, outSize,
                         deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
@@ -143,7 +148,5 @@ namespace JEM.Unity.UI.Animation
 
         [JEMGlobalEvent((byte) JEMGlobalEvents.PrepareJEMScripts)]
         private new static void RegenerateScript() => JEMRegenerableBehaviour<UIFadeAnimationScript>.RegenerateScript();
-        
-        private static float deltaTime => Time.timeScale <= 0f ? Time.unscaledDeltaTime : Time.deltaTime;
     }
 }

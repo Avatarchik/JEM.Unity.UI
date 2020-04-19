@@ -68,12 +68,18 @@ namespace JEM.Unity.UI.Animation
         public UIFadeAnimationMode AnimationMode = UIFadeAnimationMode.UsingLocalScale;
 
         /// <summary>
-        ///     Reference to the <see cref="global::UnityEngine.RectTransform"/> component.
+        ///     When true, animation will be updated using <see cref="Time.unscaledDeltaTime"/> instead of <see cref="Time.deltaTime"/>.
+        /// </summary>
+        [Header("Experimental")] 
+        public bool UnscaledTime = false;
+        
+        /// <summary>
+        ///     Reference to the <see cref="RectTransform"/> component.
         /// </summary>
         public RectTransform RectTransform { get; private set; }
 
         /// <summary>
-        ///     Reference to the <see cref="global::UnityEngine.CanvasGroup"/> component.
+        ///     Reference to the <see cref="CanvasGroup"/> component.
         /// </summary>
         public CanvasGroup CanvasGroup { get; private set; }
 

@@ -262,6 +262,7 @@ MonoBehaviour:
   FadeInScale: 1.06
   FadeOutScale: 1.03
   AnimationMode: 0
+  UnscaledTime: 1
 --- !u!1 &3575206812478049614
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +496,7 @@ MonoBehaviour:
   FadeInScale: 1.06
   FadeOutScale: 1.03
   AnimationMode: 0
+  UnscaledTime: 1
 --- !u!1 &4519728432179233169
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +601,7 @@ MonoBehaviour:
   FadeInScale: 1.06
   FadeOutScale: 1.03
   AnimationMode: 0
+  UnscaledTime: 1
 --- !u!1 &4968727666563972803
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +874,7 @@ MonoBehaviour:
   DefaultResolution: {x: 1920, y: 1080}
   MinResolution: {x: 1280, y: 720}
   MaxResolution: {x: 3840, y: 2160}
+  ScaleFactorClamp: {x: 0.8, y: 1.5}
 --- !u!114 &3592252728896629864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -888,6 +892,7 @@ MonoBehaviour:
   LoadingAnimationPanel: {fileID: 7747472199820920959}
   LoadingAnimationFadeout: 2
   WaitForUserContinue: 1
+  FreezeTime: 1
   ContinueInfoPanel: {fileID: 5396911732334490245}
   CanContinueByAnyKey: 1
 --- !u!1 &7289349768097970165
@@ -1030,3 +1035,4 @@ MonoBehaviour:
   FadeInScale: 1.06
   FadeOutScale: 1.03
   AnimationMode: 0
+  UnscaledTime: 1
