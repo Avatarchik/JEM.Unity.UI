@@ -5,6 +5,7 @@
 //
 
 using System.Collections;
+using JEM.Unity.Common;
 using JEM.Unity.UI;
 using UnityEngine;
 
@@ -14,7 +15,7 @@ namespace JEM.Unity.UITest
     {
         private IEnumerator Start()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsUnscaled(1f);
             
             UILoadingScreen.Instance.OnUserContinue += () =>
             {
@@ -35,7 +36,7 @@ namespace JEM.Unity.UITest
             UILoadingScreen.Instance.ActiveLoading();
             
             // Wait 3 seconds just as we loading something.
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSecondsUnscaled(3f);
             
             // Report loading end.
             UILoadingScreen.Instance.TryDisableLoading();

@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections;
+using JEM.Unity.Common;
 using JEM.Unity.UI.Animation;
 using UnityEngine;
 using UnityEngine.UI;
@@ -103,7 +104,7 @@ namespace JEM.Unity.UI.Control
                     i2.Activator.interactable = true;
             }
 
-            yield return new WaitForSeconds(ActivationWait);
+            yield return new WaitForSecondsUnscaled(ActivationWait);
             if (i.Panel.IsActive)
             {
                 i.Panel.SetActive(false);

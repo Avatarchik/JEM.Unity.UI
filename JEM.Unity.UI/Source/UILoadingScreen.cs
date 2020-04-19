@@ -18,8 +18,6 @@ namespace JEM.Unity.UI
     ///     A universal component that may be used as scenario for your loading screen.
     /// </summary>
     /// <remarks>
-    ///    IMPORTANT: This component does not implements any code that controls <see cref="Time.timeScale"/>.
-    ///            You need to implement your own Time.TimeScale management while game is waiting for user to continue.
     /// </remarks>
     public sealed class UILoadingScreen : JEMSingletonBehaviour<UILoadingScreen>
     {
@@ -58,6 +56,12 @@ namespace JEM.Unity.UI
         public bool WaitForUserContinue = true;
 
         /// <summary>
+        ///     When true, <see cref="Time.timeScale"/> will be set to zero while loading screen is active.
+        /// </summary>
+        [JEMIndent, JEMShowIf(nameof(HasLoadingAnimation))]
+        public bool FreezeTime = true;
+
+        /// <summary>
         ///     Reference to panel that could tell that input is needed in order to continue.
         /// </summary>
         [JEMSpace]
@@ -93,6 +97,10 @@ namespace JEM.Unity.UI
         
         private bool _dontWaitForContinue;
         private bool _loadingFadeOut;
+
+        private bool _timeScaleCached;
+        private float _previousTimeScale;
+        
         
         /// <inheritdoc />
         protected override void OnAwake()
@@ -132,7 +140,19 @@ namespace JEM.Unity.UI
             if (HasLoadingAnimation) LoadingAnimationPanel.SetActive(true, true);
             if (ContinueInfoPanel != null)
                 ContinueInfoPanel.SetActive(false, true);
-            
+
+            // Freeze time.
+            if (FreezeTime)
+            {
+                if (!_timeScaleCached)
+                {
+                    _timeScaleCached = true;
+                    _previousTimeScale = Time.timeScale;
+                }
+
+                Time.timeScale = 0f;
+            }
+
             OnLoadingStateReported?.Invoke(true);
         }
 
@@ -163,7 +183,7 @@ namespace JEM.Unity.UI
 
         private IEnumerator FadeOutWorker(bool dontWaitForContinue)
         {
-            yield return new WaitForSeconds(LoadingAnimationFadeout);
+            yield return new WaitForSecondsUnscaled(LoadingAnimationFadeout);
             _loadingFadeOut = false;
             
             var shouldWaitForUser = HasLoadingAnimation && WaitForUserContinue && !dontWaitForContinue && !_dontWaitForContinue;
@@ -187,15 +207,22 @@ namespace JEM.Unity.UI
             IsWaitingForUser = false;
             
             LoadingPanel.SetActive(false);
+            
+            // Unfeeze here.
+            if (_timeScaleCached)
+            {
+                _timeScaleCached = false;
+                Time.timeScale = _previousTimeScale;
+            }
         }
         
-        /// <summary>
-        ///     Reports loading state to UI.
-        /// </summary>
-        public void ReportLoadingState(bool isLoading)
-        {
-            OnLoadingStateReported?.Invoke(isLoading);            
-        }
+        // /// <summary>
+        // ///     Reports loading state to UI.
+        // /// </summary>
+        // public void ReportLoadingState(bool isLoading)
+        // {
+        //     OnLoadingStateReported?.Invoke(isLoading);            
+        // }
         
         /// <summary>
         ///     Reports that user wants to continue.

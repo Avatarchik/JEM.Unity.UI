@@ -10,6 +10,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JEM.Unity.Common;
 using JEM.Unity.UI.Animation;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -214,7 +215,7 @@ namespace JEM.Unity.UI.Systems
         private IEnumerator TimeoutForEnable()
         {
             CanEnable = false;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSecondsUnscaled(0.05f);
             CanEnable = true;
         }
 
@@ -310,14 +311,14 @@ namespace JEM.Unity.UI.Systems
         private IEnumerator DisableTimeout()
         {
             IsDisabled = true;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSecondsUnscaled(0.15f);
             IsDisabled = false;
         }
 
         private static IEnumerator GlobalEnableTimeout()
         {
             CanEnableAny = false;
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSecondsUnscaled(0.15f);
             CanEnableAny = true;
         }
 
