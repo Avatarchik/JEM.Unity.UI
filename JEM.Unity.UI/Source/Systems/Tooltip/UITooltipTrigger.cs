@@ -12,11 +12,11 @@ namespace JEM.Unity.UI.Systems.Tooltip
     /// <summary>
     ///     A base of trigger components of tooltip system.
     /// </summary>
-    public abstract class JEMTooltipTrigger<TTriggerData> : MonoBehaviour
+    public abstract class UITooltipTrigger<TTriggerData> : MonoBehaviour
         where TTriggerData: ITooltipTriggerData
     {
         /// <summary>
-        ///     Called by <see cref="JEMTooltipController{TTriggerData}"/> to resolve <see cref="TTriggerData"/> type based data.
+        ///     Called by <see cref="UITooltipController{TTriggerData}"/> to resolve <see cref="TTriggerData"/> type based data.
         /// </summary>
         public abstract TTriggerData ResolveTriggerData();
 
@@ -26,7 +26,7 @@ namespace JEM.Unity.UI.Systems.Tooltip
         public abstract bool ShouldTrigger();
 
         /// <summary>
-        ///     Call <see cref="JEMTooltipController{TTriggerData}.SetToolTip"/> using this trigger.
+        ///     Call <see cref="UITooltipController{TTriggerData}.SetToolTip"/> using this trigger.
         /// </summary>
         public void Trigger()
         {
@@ -41,6 +41,6 @@ namespace JEM.Unity.UI.Systems.Tooltip
         /// <summary>
         ///     Reference to the controller for this trigger.
         /// </summary>
-        public static JEMTooltipController<TTriggerData> Controller => JEMTooltipController<TTriggerData>.Instance;
+        public static UITooltipController<TTriggerData> Controller => UITooltipController<TTriggerData>.Instance;
     }
 }

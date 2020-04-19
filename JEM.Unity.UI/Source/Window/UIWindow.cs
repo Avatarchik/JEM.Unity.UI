@@ -24,8 +24,8 @@ namespace JEM.Unity.UI.Window
     ///     Draggable and re-sizable window for unity's UI system.
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("JEM/UI/Window/JEM Window Base"), HelpURL("https://github.com/TylkoDemon/JEM.Unity/wiki")]
-    public sealed class JEMInterfaceWindow : MonoBehaviour, IPointerDownHandler
+    [AddComponentMenu("JEM/UI/Window/Window Base"), HelpURL("https://github.com/TylkoDemon/JEM.Unity/wiki")]
+    public sealed class UIWindow : MonoBehaviour, IPointerDownHandler
     {
         /// <summary>
         ///     An unique window name.
@@ -267,12 +267,12 @@ namespace JEM.Unity.UI.Window
         /// </summary>
         public void Restart()
         {
-            if (AnyWindowIsUnderMotion) JEMInterfaceCursor.SetCursorIcon(JEMCursorIconName.Default);
+            if (AnyWindowIsUnderMotion) UICursorHelper.SetCursorIcon(JEMCursorIconName.Default);
 
-            var headers = GetComponentsInChildren<JEMInterfaceWindowHeader>();
+            var headers = GetComponentsInChildren<UIWindowHeader>();
             foreach (var h in headers) h.Restart();
 
-            var size = GetComponentsInChildren<JEMInterfaceWindowResize>();
+            var size = GetComponentsInChildren<UIWindowResize>();
             foreach (var s in size) s.Restart();
         }
 
@@ -287,7 +287,7 @@ namespace JEM.Unity.UI.Window
             }
 
             // Create serialized window obj.
-            var serializedWindow = new JEMSerializedWindow
+            var serializedWindow = new UISerializedWindow
             {
                 WindowName = UniqueWindowName,
                 ActiveState = gameObject.activeSelf,
@@ -344,11 +344,11 @@ namespace JEM.Unity.UI.Window
         /// </summary>
         public static void RestartAll()
         {
-            var windows = FindObjectsOfType<JEMInterfaceWindow>();
+            var windows = FindObjectsOfType<UIWindow>();
             foreach (var window in windows) window.Restart();
         }
 
-        private static JEMSerializedWindow GetSerializedWindow(string windowName)
+        private static UISerializedWindow GetSerializedWindow(string windowName)
         {
             ResolveSerializedWindows();
             for (var index = 0; index < SerializedWindows.Count; index++)
@@ -361,7 +361,7 @@ namespace JEM.Unity.UI.Window
             return null;
         }
 
-        private static void AppendSerializedWindow([NotNull] JEMSerializedWindow window)
+        private static void AppendSerializedWindow([NotNull] UISerializedWindow window)
         {
             if (window == null) throw new ArgumentNullException(nameof(window));
             var existingWindow = GetSerializedWindow(window.WindowName);
@@ -380,7 +380,7 @@ namespace JEM.Unity.UI.Window
                 return;
             }
 
-            SerializedWindows = new List<JEMSerializedWindow>();
+            SerializedWindows = new List<UISerializedWindow>();
             var dir = Environment.CurrentDirectory + "\\" + SerializedWindowsDirectory;
             if (!Directory.Exists(dir))
             {
@@ -391,7 +391,7 @@ namespace JEM.Unity.UI.Window
             var files = Directory.GetFiles(dir, "*.json");
             foreach (var f in files)
             {
-                var window = JsonConvert.DeserializeObject<JEMSerializedWindow>(File.ReadAllText(f));
+                var window = JsonConvert.DeserializeObject<UISerializedWindow>(File.ReadAllText(f));
                 if (window == null)
                     continue;
                 
@@ -402,13 +402,13 @@ namespace JEM.Unity.UI.Window
         /// <summary>
         ///     True if any window is currently moving or re-sized by user.
         /// </summary>
-        public static bool AnyWindowIsUnderMotion => JEMInterfaceWindowHeader.AnyHeaderIsDragging || JEMInterfaceWindowResize.AnyWindowIsResized;
+        public static bool AnyWindowIsUnderMotion => UIWindowHeader.AnyHeaderIsDragging || UIWindowResize.AnyWindowIsResized;
 
         /// <summary>
         ///     Relative path to the save directory of serialized windows data.
         /// </summary>
         public static string SerializedWindowsDirectory = "Config\\Windows";
 
-        private static List<JEMSerializedWindow> SerializedWindows { get; set; }
+        private static List<UISerializedWindow> SerializedWindows { get; set; }
     }
 }

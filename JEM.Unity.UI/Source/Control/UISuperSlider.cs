@@ -15,12 +15,13 @@ namespace JEM.Unity.UI.Control
 {
     /// <inheritdoc />
     /// <summary>
-    ///     InterfaceSuperSlider.
+    ///     A simple script that interpolates foreground slider with background's slider state.
+    ///     Implements few additional options to make creating health/statistics bars a bit easier.
     /// </summary>
-    [AddComponentMenu("JEM/UI/Control/JEM Super Slider")]
+    [AddComponentMenu("JEM/UI/Control/Super Slider")]
     [DisallowMultipleComponent]
     [ExecuteInEditMode]
-    public sealed class JEMInterfaceSuperSlider : MonoBehaviour
+    public sealed class UISuperSlider : MonoBehaviour
     {
         /// <summary>
         ///     Background slider.

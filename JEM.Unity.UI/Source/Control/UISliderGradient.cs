@@ -12,13 +12,13 @@ namespace JEM.Unity.UI.Control
 {
     /// <inheritdoc />
     /// <summary>
-    ///     Interface slider gradient.
+    ///     Apply gradient to target image that's position is based on slider's value.
     /// </summary>
-    [AddComponentMenu("JEM/UI/Control/JEM Slider Gradient")]
+    [AddComponentMenu("JEM/UI/Control/Slider Gradient")]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Slider))]
     [ExecuteInEditMode]
-    public sealed class JEMInterfaceSliderGradient : MonoBehaviour
+    public sealed class UISliderGradient : MonoBehaviour
     {
         /// <summary>
         ///     Target image.

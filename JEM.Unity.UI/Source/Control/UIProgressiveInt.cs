@@ -10,7 +10,7 @@ using UnityEngine.UI;
 namespace JEM.Unity.UI.Control
 {
     [RequireComponent(typeof(Text)), DisallowMultipleComponent]
-    public class JEMInterfaceProgressiveInt : MonoBehaviour
+    public class UIProgressiveInt : MonoBehaviour
     {
         // TODO: Move from update to coroutine
 

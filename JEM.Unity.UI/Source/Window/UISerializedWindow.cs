@@ -11,10 +11,10 @@ using UnityEngine;
 namespace JEM.Unity.UI.Window
 {
     /// <summary>
-    ///     A serialized <see cref="JEMInterfaceWindow"/> data.
+    ///     A serialized <see cref="UIWindow"/> data.
     /// </summary>
     [Serializable]
-    internal class JEMSerializedWindow
+    public class UISerializedWindow
     {
         /// <summary>
         ///     A name of the window.

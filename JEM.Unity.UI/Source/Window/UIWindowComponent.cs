@@ -10,21 +10,21 @@ namespace JEM.Unity.UI.Window
 {
     /// <inheritdoc />
     /// <summary>
-    ///     An base of every <see cref="T:JEM.Unity.UI.Window.JEMInterfaceWindow" /> component.
+    ///     An base of every <see cref="UIWindow" /> component.
     /// </summary>
-    public abstract class JEMInterfaceWindowComponent : MonoBehaviour
+    public abstract class UIWindowComponent : MonoBehaviour
     {
         /// <summary>
-        ///     <see cref="JEMInterfaceWindow"/> component reference.
+        ///     <see cref="UIWindow"/> component reference.
         /// </summary>
         [Header("Base Component Settings")]
-        public JEMInterfaceWindow Window;
+        public UIWindow Window;
 
         private void Awake()
         {
             if (Window == null)
             {
-                Window = GetComponentInParent<JEMInterfaceWindow>();
+                Window = GetComponentInParent<UIWindow>();
             }
 
             Debug.Assert(Window != null, "Window is missing!", this);
@@ -32,7 +32,7 @@ namespace JEM.Unity.UI.Window
 
         private void Reset()
         {
-            Window = GetComponentInParent<JEMInterfaceWindow>();
+            Window = GetComponentInParent<UIWindow>();
         }
     }
 }

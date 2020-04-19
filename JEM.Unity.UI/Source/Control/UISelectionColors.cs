@@ -15,8 +15,10 @@ namespace JEM.Unity.UI.Control
     /// <summary>
     ///     A script that will translate color of target graphic when target Selectable has been selected.
     /// </summary>
+    [AddComponentMenu("JEM/UI/Control/Selection Colors")]
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Selectable))]
-    public class JEMInterfaceSelectionColors : MonoBehaviour
+    public class UISelectionColors : MonoBehaviour
     {
         [Header("Settings")]
         public Graphic TargetGraphic;

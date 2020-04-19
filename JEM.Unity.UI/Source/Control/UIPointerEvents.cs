@@ -14,9 +14,9 @@ namespace JEM.Unity.UI.Control
     /// <summary>
     ///     A simple script that will forward IPointerHandlers in to <see cref="UnityEvent"/> that can be accessed via editor inspector.
     /// </summary>
-    [AddComponentMenu("JEM/UI/Control/JEM Pointer Events")]
+    [AddComponentMenu("JEM/UI/Control/Pointer Events")]
     [DisallowMultipleComponent]
-    public class JEMInterfacePointerEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
+    public class UIPointerEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
         IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
         [Header("Events")] public UnityEvent OnEnter;

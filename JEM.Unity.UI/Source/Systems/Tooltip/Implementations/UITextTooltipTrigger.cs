@@ -10,9 +10,9 @@ namespace JEM.Unity.UI.Systems.Tooltip.Implementations
 {
     /// <inheritdoc />
     /// <summary>
-    ///     A tooltip trigger of <see cref="JEMTextTooltip" /> controller.
+    ///     A tooltip trigger of <see cref="UITextTooltip" /> controller.
     /// </summary>
-    public class JEMTextTooltipTrigger : JEMPointerTooltipTrigger<JEMTextTooltipData>
+    public class UITextTooltipTrigger : UIPointerTooltipTrigger<JEMTextTooltipData>
     {
         [Header("Text Settings")]
         public JEMTextTooltipData TooltipData;

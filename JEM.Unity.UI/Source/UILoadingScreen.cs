@@ -20,14 +20,14 @@ namespace JEM.Unity.UI
     ///    IMPORTANT: This component does not implements any code that controls <see cref="Time.timeScale"/>.
     ///            You need to implement your own Time.TimeScale management while game is waiting for user to continue.
     /// </remarks>
-    public sealed class JEMLoadingScreen : JEMSingletonBehaviour<JEMLoadingScreen>
+    public sealed class UILoadingScreen : JEMSingletonBehaviour<UILoadingScreen>
     {
         /// <summary>
         ///     Root panel of the loading UI.
         /// </summary>
         [Header("Settings")]
         [JEMInfo(JEMInfoCondition.NegativeValue, "Value need to be set.", Type = JEMInfoMessageType.Error)]
-        public JEMInterfaceFadeAnimation LoadingPanel;
+        public UIFadeAnimation LoadingPanel;
 
         /// <summary>
         ///     Defines whether an additional loading animation is being drawn to user.
@@ -40,7 +40,7 @@ namespace JEM.Unity.UI
         [JEMSpace]
         [JEMIndent, JEMShowIf(nameof(HasLoadingAnimation))]
         [JEMInfo(JEMInfoCondition.NegativeValue, "Value need to be set.", Type = JEMInfoMessageType.Error)]
-        public JEMInterfaceFadeAnimation LoadingAnimationPanel;
+        public UIFadeAnimation LoadingAnimationPanel;
 
         /// <summary>
         ///     Time in seconds of how much loading animation should wait to fadeout after loading ends.
@@ -62,7 +62,7 @@ namespace JEM.Unity.UI
         [JEMSpace]
         [JEMIndent(2), JEMShowIf(nameof(WaitForUserContinue))]
         [JEMInfo(JEMInfoCondition.NegativeValue, "Value need to be set.", Type = JEMInfoMessageType.Error)]
-        public JEMInterfaceFadeAnimation ContinueInfoPanel;
+        public UIFadeAnimation ContinueInfoPanel;
         
         /// <summary>
         ///     When enabled, loading screen will continue by entering any key.

@@ -16,10 +16,10 @@ namespace JEM.Unity.UI
     ///     Canvas Controller component.
     ///     Controls a scale mode, scale factor and ui resolution of target Canvas.
     /// </summary>
-    [AddComponentMenu("JEM/UI/JEM Canvas Controller")]
+    [AddComponentMenu("JEM/UI/Canvas Controller")]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Canvas)), RequireComponent(typeof(CanvasScaler))]
-    public class JEMCanvasController : MonoBehaviour
+    public class UICanvasController : MonoBehaviour
     {
         /// <summary>
         ///     A default canvas resolution.
@@ -107,11 +107,11 @@ namespace JEM.Unity.UI
 
         #region EVENTS
 
-        private void OnScaleModeChanged(CanvasMode mode)
+        private void OnScaleModeChanged(UICanvasMode mode)
         {
             switch (mode)
             {
-                case CanvasMode.ScaleWithScreenSize:
+                case UICanvasMode.ScaleWithScreenSize:
                     Scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                     break;
                 default:
@@ -161,7 +161,7 @@ namespace JEM.Unity.UI
         #endregion
        
         /// <summary>
-        ///     Registers events for all <see cref="JEMCanvasController"/> in <see cref="AllControllers"/> list.
+        ///     Registers events for all <see cref="UICanvasController"/> in <see cref="AllControllers"/> list.
         /// </summary>
         public static void RegisterEventsAll()
         {
@@ -178,7 +178,7 @@ namespace JEM.Unity.UI
         /// <remarks>
         ///     Should be always called when scale mode of UI changes.
         /// </remarks>
-        public static Action<CanvasMode> OnUIScaleModeChange { get; set; }
+        public static Action<UICanvasMode> OnUIScaleModeChange { get; set; }
 
         /// <summary>
         ///     A UIScaleFactor Change event.
@@ -191,8 +191,8 @@ namespace JEM.Unity.UI
         public static Action<string> OnUIResolution { get; set; }
 
         /// <summary>
-        ///     List of all <see cref="JEMCanvasController"/> components in current scene.
+        ///     List of all <see cref="UICanvasController"/> components in current scene.
         /// </summary>
-        public static List<JEMCanvasController> AllControllers { get; } = new List<JEMCanvasController>();
+        public static List<UICanvasController> AllControllers { get; } = new List<UICanvasController>();
     }
 }

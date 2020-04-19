@@ -14,9 +14,9 @@ namespace JEM.Unity.UI.Control
     /// <summary>
     ///     Apply value from slider to text.
     /// </summary>
-    [AddComponentMenu("JEM/UI/Control/JEM Slider To Text")]
+    [AddComponentMenu("JEM/UI/Control/Slider To Text")]
     [DisallowMultipleComponent, RequireComponent(typeof(Slider)), ExecuteInEditMode]
-    public sealed class JEMInterfaceSliderToText : MonoBehaviour
+    public sealed class UISliderToText : MonoBehaviour
     {
         /// <summary>
         ///     Source text.

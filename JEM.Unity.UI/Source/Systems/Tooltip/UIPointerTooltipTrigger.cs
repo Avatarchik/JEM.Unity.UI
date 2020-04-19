@@ -9,11 +9,11 @@ using UnityEngine.EventSystems;
 
 namespace JEM.Unity.UI.Systems.Tooltip
 {
-    /// <inheritdoc cref="JEMTooltipTrigger{TTriggerData}" />
+    /// <inheritdoc cref="UITooltipTrigger{TTriggerData}" />
     /// <summary>
     ///     A tooltip component that implements <see cref="T:UnityEngine.EventSystems.IPointerEnterHandler" /> and <see cref="T:UnityEngine.EventSystems.IPointerExitHandler" /> to trigger active tooltip.
     /// </summary>
-    public abstract class JEMPointerTooltipTrigger<TTriggerData> : JEMTooltipTrigger<TTriggerData>,
+    public abstract class UIPointerTooltipTrigger<TTriggerData> : UITooltipTrigger<TTriggerData>,
         IPointerEnterHandler, IPointerExitHandler where TTriggerData : ITooltipTriggerData
     {
         [Header("Pointer Settings")]

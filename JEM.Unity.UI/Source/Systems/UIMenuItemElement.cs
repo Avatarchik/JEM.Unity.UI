@@ -18,15 +18,15 @@ using UnityEngine.UI;
 
 namespace JEM.Unity.UI.Systems
 {
-    public class JEMMenuItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    public class UIMenuItemElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [Header("Settings")]
         public Text Text;
         public Image Image;
         public Color NormalColor;
         public Color HighlightColor;
-        public JEMInterfaceFadeAnimation CellContentRight;
-        public JEMInterfaceFadeAnimation CellContentDown;
+        public UIFadeAnimation CellContentRight;
+        public UIFadeAnimation CellContentDown;
 
         public string FullPath;
         public bool IsRoot;
@@ -232,7 +232,7 @@ namespace JEM.Unity.UI.Systems
 
         private bool HasChildrenDrawn()
         {
-            var allChildren = transform.GetComponentsInChildren<JEMMenuItemElement>(true);
+            var allChildren = transform.GetComponentsInChildren<UIMenuItemElement>(true);
             foreach (var c in allChildren)
             {
                 if (c == this) continue;
@@ -247,7 +247,7 @@ namespace JEM.Unity.UI.Systems
         /// </summary>
         private bool IsChildActive()
         {
-            var allChildren = transform.GetComponentsInChildren<JEMMenuItemElement>(true);
+            var allChildren = transform.GetComponentsInChildren<UIMenuItemElement>(true);
             foreach (var c in allChildren)
             {
                 if (c == this) continue;
@@ -262,7 +262,7 @@ namespace JEM.Unity.UI.Systems
         /// </summary>
         private void DisableChildren()
         {
-            var allChildren = transform.GetComponentsInChildren<JEMMenuItemElement>(true);
+            var allChildren = transform.GetComponentsInChildren<UIMenuItemElement>(true);
             foreach (var c in allChildren)
             {
                 if (c == this) continue;
@@ -279,7 +279,7 @@ namespace JEM.Unity.UI.Systems
         /// </summary>
         private bool IsParentActive()
         {
-            var allChildren = transform.GetComponentsInParent<JEMMenuItemElement>(true);
+            var allChildren = transform.GetComponentsInParent<UIMenuItemElement>(true);
             foreach (var c in allChildren)
             {
                 if (c == this) continue;
@@ -294,7 +294,7 @@ namespace JEM.Unity.UI.Systems
         /// </summary>
         private void DisableParent()
         {
-            var allParent = transform.GetComponentsInParent<JEMMenuItemElement>(true);
+            var allParent = transform.GetComponentsInParent<UIMenuItemElement>(true);
             foreach (var c in allParent)
             {
                 if (c == this) continue;
@@ -341,7 +341,7 @@ namespace JEM.Unity.UI.Systems
 
             // Activate target cells.
             var index = 0;
-            var exclutedCells = new List<JEMMenuItemElement>();
+            var exclutedCells = new List<UIMenuItemElement>();
             while (targetCell != null)
             {
                 if (!targetCell.IsEnabled)
@@ -372,24 +372,24 @@ namespace JEM.Unity.UI.Systems
             // Set the state.
             ShouldRootDrawn = activeState;
             // Set the state of lock mask so user will be unable to interact with the rest of UI while menu is active.
-            JEMMenuItemManager.Instance.LockMask.SetActive(activeState);
+            UIMenuItemManager.Instance.LockMask.SetActive(activeState);
         }
 
         /// <summary>
         ///     Returns a local cell of given name
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
-        internal JEMMenuItemElement GetLocalCell([NotNull] string cellName)
+        internal UIMenuItemElement GetLocalCell([NotNull] string cellName)
         {
             if (cellName == null) throw new ArgumentNullException(nameof(cellName));
-            return GetComponentsInChildren<JEMMenuItemElement>().FirstOrDefault(i => i.GetCellName() == cellName);
+            return GetComponentsInChildren<UIMenuItemElement>().FirstOrDefault(i => i.GetCellName() == cellName);
         }
 
         /// <summary>
         ///     Returns a cell of given name.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
-        internal static JEMMenuItemElement GetCell([NotNull] string cellName)
+        internal static UIMenuItemElement GetCell([NotNull] string cellName)
         {
             if (cellName == null) throw new ArgumentNullException(nameof(cellName));
             return Items.FirstOrDefault(i => i.GetCellName() == cellName);
@@ -405,6 +405,6 @@ namespace JEM.Unity.UI.Systems
         /// <summary>
         ///     List of all menu items in scene.
         /// </summary>
-        internal static List<JEMMenuItemElement> Items { get; } = new List<JEMMenuItemElement>();
+        internal static List<UIMenuItemElement> Items { get; } = new List<UIMenuItemElement>();
     }
 }

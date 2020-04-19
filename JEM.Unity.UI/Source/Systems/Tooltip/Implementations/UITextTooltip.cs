@@ -38,7 +38,7 @@ namespace JEM.Unity.UI.Systems.Tooltip.Implementations
     /// <summary>
     ///     Simple tooltip implementation that draws text or locale text data from received <see cref="JEMTextTooltipData" />.
     /// </summary>
-    public class JEMTextTooltip : JEMPointerTooltip<JEMTextTooltipData>
+    public class UITextTooltip : UIPointerTooltip<JEMTextTooltipData>
     {
         [Header("Text Settings")]
         public Text TextReference;

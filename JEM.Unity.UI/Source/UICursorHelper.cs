@@ -44,9 +44,9 @@ namespace JEM.Unity.UI
     /// <summary>
     ///     Interface cursor.
     /// </summary>
-    [AddComponentMenu("JEM/UI/JEM Cursor Manager")]
+    [AddComponentMenu("JEM/UI/Cursor Manager")]
     [DisallowMultipleComponent]
-    public sealed class JEMInterfaceCursor : JEMSingletonBehaviour<JEMInterfaceCursor>
+    public sealed class UICursorHelper : JEMSingletonBehaviour<UICursorHelper>
     {
         /// <summary>
         ///     Cursor UI image.

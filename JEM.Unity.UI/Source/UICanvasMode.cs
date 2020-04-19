@@ -10,7 +10,7 @@ namespace JEM.Unity.UI
     ///     Canvas Mode.
     ///     Defines a mode that CanvasScaler is or should use.
     /// </summary>
-    public enum CanvasMode
+    public enum UICanvasMode
     {
         ConstantPixelSize,
         ScaleWithScreenSize

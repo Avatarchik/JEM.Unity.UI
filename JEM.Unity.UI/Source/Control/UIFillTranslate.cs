@@ -12,7 +12,12 @@ using UnityEngine.UI;
 
 namespace JEM.Unity.UI.Control
 {
-    public class JEMInterfaceFillTranslate : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    /// <summary>
+    ///     Changes fillAmount of target image whenever pointer enters or exists this control.
+    /// </summary>
+    [AddComponentMenu("JEM/UI/Control/Fill Translate")]
+    [DisallowMultipleComponent]
+    public class UIFillTranslate : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [Header("Settings")]
         public Image TargetImage;

@@ -17,12 +17,12 @@ namespace JEM.Unity.UI.Systems
     ///     A manager of context menu for unity ui.
     /// </summary>
     [DefaultExecutionOrder(-10)]
-    public class JEMMenuItemManager : JEMSingletonBehaviour<JEMMenuItemManager>
+    public class UIMenuItemManager : JEMSingletonBehaviour<UIMenuItemManager>
     {
         internal struct Cell
         {
             public string Name;
-            public JEMMenuItemElement Interface;
+            public UIMenuItemElement Interface;
 
             public List<Cell> Children;
 
@@ -53,7 +53,7 @@ namespace JEM.Unity.UI.Systems
         [Header("Settings")]
         public RectTransform ItemsContent;
         public GameObject ItemPrefab;
-        public JEMInterfaceFadeAnimation LockMask;
+        public UIFadeAnimation LockMask;
 
         /// <inheritdoc />
         protected override void OnAwake()
@@ -66,12 +66,12 @@ namespace JEM.Unity.UI.Systems
         /// </summary>
         public void DisableMenu()
         {
-            foreach (var i in JEMMenuItemElement.Items)
+            foreach (var i in UIMenuItemElement.Items)
             {
                 i.SetState(false);
             }
 
-            JEMMenuItemElement.SetRootDrawn(false);
+            UIMenuItemElement.SetRootDrawn(false);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace JEM.Unity.UI.Systems
         }
 
         /// <summary>
-        ///     Creates new <see cref="Cell"/> struct with <see cref="JEMMenuItemElement"/> instance.
+        ///     Creates new <see cref="Cell"/> struct with <see cref="UIMenuItemElement"/> instance.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
         internal static Cell CreateNewCell([NotNull] string cellName, [NotNull] RectTransform root, bool isRoot, string fullPath)
@@ -161,14 +161,14 @@ namespace JEM.Unity.UI.Systems
         }
 
         /// <summary>
-        ///     Creates new <see cref="JEMMenuItemElement"/> instance.
+        ///     Creates new <see cref="UIMenuItemElement"/> instance.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
-        internal static JEMMenuItemElement CreateNewItem([NotNull] RectTransform root)
+        internal static UIMenuItemElement CreateNewItem([NotNull] RectTransform root)
         {
             if (root == null) throw new ArgumentNullException(nameof(root));
             var obj = JEMObject.Instantiate(Instance.ItemPrefab, root);
-            var item = obj.GetComponent<JEMMenuItemElement>();
+            var item = obj.GetComponent<UIMenuItemElement>();
             if (item == null)
                 throw new NullReferenceException(nameof(item));
             obj.SetActive(true);

@@ -18,8 +18,8 @@ namespace JEM.Unity.UI
     /// <remarks>
     ///    Possible string formatting.
     /// </remarks>
-    [AddComponentMenu("JEM/UI/JEM Locale Text"), DisallowMultipleComponent]
-    public class JEMInterfaceLocaleText : JEMInterfaceLocaleElement
+    [AddComponentMenu("JEM/UI/Locale Text"), DisallowMultipleComponent]
+    public class UILocaleText : UILocaleElement
     {
         /// <summary>
         ///     Key of the locale.

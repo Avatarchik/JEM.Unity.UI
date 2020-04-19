@@ -9,7 +9,7 @@ using JEM.Unity.UI.Systems.Tooltip.Implementations;
 namespace JEM.Unity.UI.Systems.Tooltip
 {
     /// <summary>
-    ///     Interface that implements data used by <see cref="JEMTextTooltip"/> based types to draw tooltip.
+    ///     Interface that implements data used by <see cref="UITextTooltip"/> based types to draw tooltip.
     /// </summary>
     public interface ITooltipTriggerData { }
 
@@ -17,13 +17,13 @@ namespace JEM.Unity.UI.Systems.Tooltip
     /// <summary>
     ///     A base controller class of Tooltip system.
     /// </summary>
-    public abstract class JEMTooltipController<TTriggerData> : JEMSingletonBehaviour<JEMTooltipController<TTriggerData>>
+    public abstract class UITooltipController<TTriggerData> : JEMSingletonBehaviour<UITooltipController<TTriggerData>>
         where TTriggerData : ITooltipTriggerData
     {
         /// <summary>
         ///     Reference to active tooltip trigger component.
         /// </summary>
-        public JEMTooltipTrigger<TTriggerData> ActiveTrigger { get; private set; }
+        public UITooltipTrigger<TTriggerData> ActiveTrigger { get; private set; }
 
         /// <summary>
         ///     Disable active tooltip.
@@ -33,7 +33,7 @@ namespace JEM.Unity.UI.Systems.Tooltip
         /// <summary>
         ///     Sets the active tooltip.
         /// </summary>
-        public void SetToolTip(JEMTooltipTrigger<TTriggerData> trigger)
+        public void SetToolTip(UITooltipTrigger<TTriggerData> trigger)
         {
             ActiveTrigger = trigger;
             if (trigger == null)

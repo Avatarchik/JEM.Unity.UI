@@ -10,7 +10,7 @@ using UnityEditor.AnimatedValues;
 
 namespace JEM.Unity.UIEditor
 {
-    [CustomEditor(typeof(JEMInterfaceCursor))]
+    [CustomEditor(typeof(UICursorHelper))]
     internal class JEMInterfaceCursorEditor : Editor
     {
         private SerializedProperty CursorIconDefault;
@@ -19,7 +19,7 @@ namespace JEM.Unity.UIEditor
         private SerializedProperty CursorIconRotate;
         private SerializedProperty CursorImage;
 
-        private JEMInterfaceCursor script;
+        private UICursorHelper script;
 
         protected virtual void OnEnable()
         {
@@ -39,7 +39,7 @@ namespace JEM.Unity.UIEditor
 
         protected virtual void InternalUpdateScript()
         {
-            script = target as JEMInterfaceCursor;
+            script = target as UICursorHelper;
             if (script == null)
                 return;
         }
@@ -58,7 +58,7 @@ namespace JEM.Unity.UIEditor
             {
                 InternalUpdateScript();
                 EditorGUILayout.HelpBox(
-                    $"Unable to draw {nameof(JEMInterfaceCursor)} inspector gui. Target script is null.",
+                    $"Unable to draw {nameof(UICursorHelper)} inspector gui. Target script is null.",
                     MessageType.Error);
                 return;
             }

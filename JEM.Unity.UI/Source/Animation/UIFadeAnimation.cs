@@ -10,9 +10,9 @@ using UnityEngine;
 namespace JEM.Unity.UI.Animation
 {
     /// <summary>
-    ///     Defines a animation type of <see cref="JEMInterfaceFadeAnimation"/>.
+    ///     Defines a animation type of <see cref="UIFadeAnimation"/>.
     /// </summary>
-    public enum JEMFadeAnimationMode
+    public enum UIFadeAnimationMode
     {
         /// <summary>
         ///     The scale animations are disabled.
@@ -29,20 +29,20 @@ namespace JEM.Unity.UI.Animation
         /// </summary>
         UsingSizeDelta
     }
-
+    
     /// <inheritdoc />
     /// <summary>
     ///     A component that activates or de-activates target object
     ///      with fade-in/out animations.
     /// </summary>
     /// <remarks>
-    ///     To fade all children, <see cref="JEMInterfaceFadeAnimation"/>
+    ///     To fade all children, <see cref="UIFadeAnimation"/>
     ///      is using <see cref="CanvasGroup"/>.
-    ///     Because of that, we except you to not use <see cref="CanvasGroup"/> of object with <see cref="JEMInterfaceFadeAnimation"/> attached.
+    ///     Because of that, we except you to not use <see cref="CanvasGroup"/> of object with <see cref="UIFadeAnimation"/> attached.
     /// </remarks>
-    [AddComponentMenu("JEM/UI/JEM Interface Fade Animation")]
+    [AddComponentMenu("JEM/UI/Interface Fade Animation")]
     [DisallowMultipleComponent, RequireComponent(typeof(RectTransform), typeof(CanvasGroup))]
-    public sealed class JEMInterfaceFadeAnimation : MonoBehaviour
+    public sealed class UIFadeAnimation : MonoBehaviour
     {
         /// <summary>
         ///     Speed of fading out/in.
@@ -65,7 +65,7 @@ namespace JEM.Unity.UI.Animation
         ///     Defines target animation mode.
         /// </summary>
         [Space]
-        public JEMFadeAnimationMode AnimationMode = JEMFadeAnimationMode.UsingLocalScale;
+        public UIFadeAnimationMode AnimationMode = UIFadeAnimationMode.UsingLocalScale;
 
         /// <summary>
         ///     Reference to the <see cref="global::UnityEngine.RectTransform"/> component.
@@ -131,13 +131,13 @@ namespace JEM.Unity.UI.Animation
         }
 
         /// <summary>
-        ///     Sets the active state of <see cref="JEMInterfaceFadeAnimation"/>.
+        ///     Sets the active state of <see cref="UIFadeAnimation"/>.
         /// </summary>
         /// <param name="activeState"/>
         public void SetWindowActive(bool activeState) => SetActive(activeState);
 
         /// <summary>
-        ///     Sets the active state of <see cref="JEMInterfaceFadeAnimation"/>.
+        ///     Sets the active state of <see cref="UIFadeAnimation"/>.
         /// </summary>
         /// <param name="activeState"/>
         /// <param name="forced">If true, operation will be forced and object will be disabled without fading.</param>
@@ -195,26 +195,26 @@ namespace JEM.Unity.UI.Animation
             // Update scale
             switch (AnimationMode)
             {
-                case JEMFadeAnimationMode.UsingLocalScale:
+                case UIFadeAnimationMode.UsingLocalScale:
                     gameObject.transform.localScale = OriginalScale;
                     break;
-                case JEMFadeAnimationMode.UsingSizeDelta:
+                case UIFadeAnimationMode.UsingSizeDelta:
                     RectTransform.sizeDelta = OriginalSizeDelta;
                     break;
             }
         }
 
-        private static JEMInterfaceFadeAnimationScript Script
+        private static UIFadeAnimationScript Script
         {
             get
             {
                 if (_script == null)
-                    _script = JEMInterfaceFadeAnimationScript.GetScript();
+                    _script = UIFadeAnimationScript.GetScript();
 
                 return _script;
             }
         }
 
-        private static JEMInterfaceFadeAnimationScript _script;
+        private static UIFadeAnimationScript _script;
     }
 }

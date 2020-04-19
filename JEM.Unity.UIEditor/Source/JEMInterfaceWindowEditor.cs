@@ -10,12 +10,12 @@ using UnityEngine;
 
 namespace JEM.Unity.UIEditor
 {
-    [CustomEditor(typeof(JEMInterfaceWindow))]
+    [CustomEditor(typeof(UIWindow))]
     internal sealed class JEMInterfaceWindowEditor : Editor
     {
-        private JEMInterfaceWindow _script;
+        private UIWindow _script;
 
-        private void OnEnable() => _script = target as JEMInterfaceWindow;
+        private void OnEnable() => _script = target as UIWindow;
         
         /// <inheritdoc />
         public override void OnInspectorGUI()

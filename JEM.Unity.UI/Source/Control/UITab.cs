@@ -14,18 +14,17 @@ namespace JEM.Unity.UI.Control
 {
     /// <inheritdoc />
     /// <summary>
-    ///     JEM Interface Tab.
     ///     A simple script that binds selected array of buttons with selected panels
     ///      so the only one panel could be active at the time.
     /// </summary>
-    [AddComponentMenu("JEM/UI/Control/JEM Tab Controller")]
+    [AddComponentMenu("JEM/UI/Control/Tab Controller")]
     [DisallowMultipleComponent]
-    internal class JEMInterfaceTab : MonoBehaviour
+    internal class UITab : MonoBehaviour
     {
         [Serializable]
         public class Item
         {
-            public JEMInterfaceFadeAnimation Panel;
+            public UIFadeAnimation Panel;
             public Button Activator;
         }
 

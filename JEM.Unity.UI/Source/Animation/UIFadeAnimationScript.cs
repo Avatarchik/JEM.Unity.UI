@@ -13,7 +13,7 @@ using UnityEngine;
 namespace JEM.Unity.UI.Animation
 {
     /// <inheritdoc />
-    internal sealed class JEMInterfaceFadeAnimationScript : JEMRegenerableScript<JEMInterfaceFadeAnimationScript>
+    internal sealed class UIFadeAnimationScript : JEMRegenerableScript<UIFadeAnimationScript>
     {
         /// <inheritdoc />
         protected override void OnAwake()
@@ -21,7 +21,7 @@ namespace JEM.Unity.UI.Animation
             // ignore
         }
 
-        internal IEnumerator FadeAnimationWorker(JEMInterfaceFadeAnimation window)
+        internal IEnumerator FadeAnimationWorker(UIFadeAnimation window)
         {
             if (window.IsActive) window.gameObject.LiteSetActive(true);
             else if (window == null || window.gameObject == null || !window.gameObject.activeSelf) yield break;
@@ -64,17 +64,17 @@ namespace JEM.Unity.UI.Animation
             window.FadeWorker = null;
         }
 
-        internal IEnumerator ScaleAnimationWorker(JEMInterfaceFadeAnimation window)
+        internal IEnumerator ScaleAnimationWorker(UIFadeAnimation window)
         {
             switch (window.AnimationMode)
             {
-                case JEMFadeAnimationMode.Disabled:
+                case UIFadeAnimationMode.Disabled:
                     // Animation disabled.
                     break;
-                case JEMFadeAnimationMode.UsingLocalScale:
+                case UIFadeAnimationMode.UsingLocalScale:
                     yield return LocalScaleAnimationWorker(window);
                     break;
-                case JEMFadeAnimationMode.UsingSizeDelta:
+                case UIFadeAnimationMode.UsingSizeDelta:
                     yield return DeltaScaleAnimationWorker(window);
                     break;
                 default:
@@ -84,7 +84,7 @@ namespace JEM.Unity.UI.Animation
             window.ScaleWorker = null;
         }
 
-        private static IEnumerator LocalScaleAnimationWorker(JEMInterfaceFadeAnimation window)
+        private static IEnumerator LocalScaleAnimationWorker(UIFadeAnimation window)
         {
             if (window.IsActive)
             {
@@ -111,7 +111,7 @@ namespace JEM.Unity.UI.Animation
             }
         }
 
-        private static IEnumerator DeltaScaleAnimationWorker(JEMInterfaceFadeAnimation window)
+        private static IEnumerator DeltaScaleAnimationWorker(UIFadeAnimation window)
         {
             if (window.IsActive)
             {
@@ -141,7 +141,7 @@ namespace JEM.Unity.UI.Animation
         }
 
         [JEMGlobalEvent((byte) JEMGlobalEvents.PrepareJEMScripts)]
-        private new static void RegenerateScript() => JEMRegenerableScript<JEMInterfaceFadeAnimationScript>.RegenerateScript();
+        private new static void RegenerateScript() => JEMRegenerableScript<UIFadeAnimationScript>.RegenerateScript();
         
         private static float deltaTime => Time.timeScale <= 0f ? Time.unscaledDeltaTime : Time.deltaTime;
     }

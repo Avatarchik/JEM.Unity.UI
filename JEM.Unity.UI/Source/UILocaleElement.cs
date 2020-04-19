@@ -12,7 +12,7 @@ namespace JEM.Unity.UI
     /// <summary>
     ///     Base element of every locale based interface element.
     /// </summary>
-    public abstract class JEMInterfaceLocaleElement : MonoBehaviour
+    public abstract class UILocaleElement : MonoBehaviour
     {
         private void OnEnable()
         {
@@ -30,7 +30,7 @@ namespace JEM.Unity.UI
         /// </summary>
         public static void RefreshAll()
         {
-            var elements = FindObjectsOfType<JEMInterfaceLocaleElement>();
+            var elements = FindObjectsOfType<UILocaleElement>();
             foreach (var e in elements)
             {
                 e.RefreshLocale();

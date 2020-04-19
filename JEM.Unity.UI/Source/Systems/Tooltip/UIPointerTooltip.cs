@@ -12,14 +12,14 @@ namespace JEM.Unity.UI.Systems.Tooltip
 {
     /// <inheritdoc />
     /// <summary>
-    ///     A tooltip controller that draws content under user's mouse and uses <see cref="JEMInterfaceWindow" /> to clamp transform in target workspace rect.
+    ///     A tooltip controller that draws content under user's mouse and uses <see cref="UIWindow" /> to clamp transform in target workspace rect.
     /// </summary>
-    public abstract class JEMPointerTooltip<TTriggerData> : JEMTooltipController<TTriggerData>
+    public abstract class UIPointerTooltip<TTriggerData> : UITooltipController<TTriggerData>
         where TTriggerData : ITooltipTriggerData
     {
         [Header("Window Settings")]
-        public JEMInterfaceWindow TooltipWindow;
-        public JEMInterfaceFadeAnimation TooltipPanel;
+        public UIWindow TooltipWindow;
+        public UIFadeAnimation TooltipPanel;
 
         [Header("Post-Processing")]
         public Vector2 Offset = new Vector2(0.5f, 0.5f);

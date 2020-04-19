@@ -9,13 +9,13 @@ using UnityEngine.EventSystems;
 
 namespace JEM.Unity.UI.Window
 {
-    /// <inheritdoc cref="JEMInterfaceWindowComponent" />
+    /// <inheritdoc cref="UIWindowComponent" />
     /// <summary>
-    ///     A component that defines Resize point of <see cref="JEMInterfaceWindow"/>.
+    ///     A component that defines Resize point of <see cref="UIWindow"/>.
     /// </summary>
-    [AddComponentMenu("JEM/UI/Window/JEM Window Resize")]
+    [AddComponentMenu("JEM/UI/Window/Window Resize")]
     [DisallowMultipleComponent]
-    public sealed class JEMInterfaceWindowResize : JEMInterfaceWindowComponent, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler,
+    public sealed class UIWindowResize : UIWindowComponent, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler,
         IPointerUpHandler
     {
         private const float Multiplier = 0.875f;
@@ -34,7 +34,7 @@ namespace JEM.Unity.UI.Window
         void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
         {
             if (!CanWorkWithWindow) return;
-            if (JEMInterfaceWindow.AnyWindowIsUnderMotion) return;
+            if (UIWindow.AnyWindowIsUnderMotion) return;
             AnyWindowIsResized = true;
 
             _isMouseDown = true;
@@ -43,7 +43,7 @@ namespace JEM.Unity.UI.Window
             _startSize = Window.WindowTransform.sizeDelta;
             _mouseStartPosition = Input.mousePosition;
 
-            JEMInterfaceCursor.SetCursorIcon(JEMCursorIconName.Resize);
+            UICursorHelper.SetCursorIcon(JEMCursorIconName.Resize);
         }
 
         /// <inheritdoc />
@@ -51,8 +51,8 @@ namespace JEM.Unity.UI.Window
         {
             if (!CanWorkWithWindow) return;
             _isMouseOver = true;
-            if (!JEMInterfaceWindow.AnyWindowIsUnderMotion)
-                JEMInterfaceCursor.SetCursorIcon(JEMCursorIconName.Resize);
+            if (!UIWindow.AnyWindowIsUnderMotion)
+                UICursorHelper.SetCursorIcon(JEMCursorIconName.Resize);
         }
 
         /// <inheritdoc />
@@ -60,7 +60,7 @@ namespace JEM.Unity.UI.Window
         {
             _isMouseOver = false;
             if (!_isWindowMoved)
-                JEMInterfaceCursor.SetCursorIcon(JEMCursorIconName.Default);
+                UICursorHelper.SetCursorIcon(JEMCursorIconName.Default);
         }
 
         /// <inheritdoc />
@@ -71,7 +71,7 @@ namespace JEM.Unity.UI.Window
             _isMouseDown = false;
             _isWindowMoved = false;
 
-            JEMInterfaceCursor.SetCursorIcon(JEMCursorIconName.Default);
+            UICursorHelper.SetCursorIcon(JEMCursorIconName.Default);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace JEM.Unity.UI.Window
         public void Restart()
         {
             if (_isWindowMoved || _isMouseDown)
-                JEMInterfaceCursor.SetCursorIcon(JEMCursorIconName.Default);
+                UICursorHelper.SetCursorIcon(JEMCursorIconName.Default);
 
             _isWindowMoved = false;
             _isMouseOver = false;

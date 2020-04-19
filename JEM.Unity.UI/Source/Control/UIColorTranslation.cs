@@ -12,9 +12,11 @@ namespace JEM.Unity.UI.Control
 {
     /// <inheritdoc cref="MonoBehaviour" />
     /// <summary>
-    ///     Script that translates color of target graphic when Pointer events received.
+    ///     Translates color of target graphic when on Pointer events.
     /// </summary>
-    public class JEMInterfaceColorTranslation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerClickHandler
+    [AddComponentMenu("JEM/UI/Control/Color Translation")]
+    [DisallowMultipleComponent]
+    public class UIColorTranslation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerClickHandler
     {
         [Header("Settings")]
         public Graphic TargetGraphic;
