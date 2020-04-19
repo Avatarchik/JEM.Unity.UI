@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections;
+using JEM.Unity.Common;
 using JEM.Unity.Extension;
 using JEM.Unity.Systems;
 using UnityEngine;
@@ -13,7 +14,7 @@ using UnityEngine;
 namespace JEM.Unity.UI.Animation
 {
     /// <inheritdoc />
-    internal sealed class UIFadeAnimationScript : JEMRegenerableScript<UIFadeAnimationScript>
+    internal sealed class UIFadeAnimationScript : JEMRegenerableBehaviour<UIFadeAnimationScript>
     {
         /// <inheritdoc />
         protected override void OnAwake()
@@ -141,7 +142,7 @@ namespace JEM.Unity.UI.Animation
         }
 
         [JEMGlobalEvent((byte) JEMGlobalEvents.PrepareJEMScripts)]
-        private new static void RegenerateScript() => JEMRegenerableScript<UIFadeAnimationScript>.RegenerateScript();
+        private new static void RegenerateScript() => JEMRegenerableBehaviour<UIFadeAnimationScript>.RegenerateScript();
         
         private static float deltaTime => Time.timeScale <= 0f ? Time.unscaledDeltaTime : Time.deltaTime;
     }

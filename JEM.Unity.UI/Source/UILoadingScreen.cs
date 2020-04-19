@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using JEM.Unity.Attribute.Behaviour;
 using JEM.Unity.Attribute.Style;
+using JEM.Unity.Common;
 using JEM.Unity.UI.Animation;
 using UnityEngine;
 
