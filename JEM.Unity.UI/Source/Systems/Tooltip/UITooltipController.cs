@@ -4,6 +4,7 @@
 // Copyright (c) 2020 ADAM MAJCHEREK ALL RIGHTS RESERVED
 //
 
+using JEM.Unity.Common;
 using JEM.Unity.UI.Systems.Tooltip.Implementations;
 
 namespace JEM.Unity.UI.Systems.Tooltip
