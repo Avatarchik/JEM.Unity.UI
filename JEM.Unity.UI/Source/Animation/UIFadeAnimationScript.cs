@@ -31,24 +31,24 @@ namespace JEM.Unity.UI.Animation
             if (window.IsActive)
             {
                 c.alpha = 0f;
-                while (c.alpha < 0.995f)
+                while (c != null && c.alpha < 0.995f)
                 {
                     var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
                     c.alpha = Mathf.Lerp(c.alpha, 1f, deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
-                }
+                } if (c == null) yield break; // Object may be destroyed while loop is running so check here and break.
 
                 c.alpha = 1f;
             }
             else
             {
                 c.alpha = 1f;
-                while (c.alpha > 0.005f)
+                while (c != null && c.alpha > 0.005f)
                 {
                     var deltaTime = window.UnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
                     c.alpha = Mathf.Lerp(c.alpha, 0f, deltaTime * window.FadeSpeed);
                     yield return new WaitForEndOfFrame();
-                }
+                } if (c == null) yield break; // Object may be destroyed while loop is running so check here and break.
 
                 c.alpha = 0f;
             }
